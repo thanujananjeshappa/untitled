@@ -1,134 +1,154 @@
 //Drawer
-import 'package:flutter/material.dart';
-void main(){
-  runApp(MaterialApp(
-      home: DrawerWidgt())
-  );
+import 'dart:ffi';
 
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MaterialApp(home: MainPage()));
 }
-class DrawerWidgt extends StatefulWidget {
-  const DrawerWidgt({Key? key}) : super(key: key);
+
+class MainPage extends StatefulWidget {
+  const MainPage({Key? key}) : super(key: key);
 
   @override
-  _DrawerWidgtState createState() => _DrawerWidgtState();
+  State<MainPage> createState() => _MainPageState();
 }
 
-class _DrawerWidgtState extends State<DrawerWidgt> {
-
+class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      endDrawer: Drawer(
-        // width: double.infinity,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(20),
-            topLeft: Radius.circular(20),
-          ),
-        ),
-        shadowColor: Colors.black12,
-        backgroundColor: Colors.grey,
-        elevation: 1,
-        child: ListView(
-          children: [
-            DrawerHeader(
+    return SafeArea(
+        child: Scaffold(
+            backgroundColor: Color(0xff9cd9d0),
+            //
+            // appBar: AppBar(
+            //   backgroundColor: Color(0xff9cd9d0),
+            // ),
+            body: SingleChildScrollView(
               child: Column(
-                children: [
-                  CircleAvatar(
-                    radius: 60,
-                    backgroundImage: AssetImage("images/Screenshot_2022-12-24-00-48-16-223_com.google.android.youtube.jpg"),
-                  ),
-                  Text("Header"),
-                ],
-              ),
-              decoration: BoxDecoration(color: Colors.white),
-            ),
-            ListTile(
-              title: Text("Menu"),
-              trailing: IconButton(onPressed: (){},icon: Icon(Icons.menu),),
-            ) ,
-            ListTile(
-              title: Text("Price"),
-              trailing: IconButton(onPressed: (){},icon: Icon(Icons.money),),
-            ) ,  ListTile(
-              title: Text("Stock"),
-              trailing: IconButton(onPressed: (){},icon: Icon(Icons.analytics_outlined),),
-            )  , ListTile(
-              title: Text("list"),
-              trailing: IconButton(onPressed: (){},icon: Icon(Icons.list),),
-            )   ,ListTile(
-              title: Text("Grid"),
-              trailing: IconButton(onPressed: (){},icon: Icon(Icons.grid_3x3),),
-            )   ,ListTile(
-              title: Text("Wallet"),
-              trailing: IconButton(onPressed: (){},icon: Icon(Icons.wallet),),
-            )   ,ListTile(
-              title: Text("Logout"),
-              trailing: IconButton(onPressed: (){},icon: Icon(Icons.logout),),
-            )   ,ListTile(
-              title: Text("Help"),
-              trailing: IconButton(onPressed: (){},icon: Icon(Icons.help),),
-            )   ,ListTile(
-              title: Text("Contact"),
-              trailing: IconButton(onPressed: (){},icon: Icon(Icons.contact_phone),),
-            )
-          ],
-        ),
-      ),
-      drawer: Drawer(
-        backgroundColor: Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        elevation: 20,
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.blue,
-              ),
-              child: Center(
-                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  //   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CircleAvatar(
-                      radius: 50,
+                    Stack(children: [
+                      Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                            height: 50, width: 50, color: Color(0xff9cd9d0)),
+                      ),
+                    ]),
+                    Container(
+                        height: 70,
+                        // width: 100,
+                        // alignment: Alignment.center,
+                        // color: Colors.grey,
+                        child: Center(
+                            child: Text(
+                          "Welcome",
+                          textScaleFactor: 3.7,
+                          style: TextStyle(letterSpacing: 1),
+                        ))),
+                    SizedBox(
+                      height: 15,
+                      width: 10,
+                    ),
+                    Text(
+                      "Continue as...",
+                      textScaleFactor: 2,
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 1,
                     ),
-                    Text('Profile'),
-                  ],
-                ),
-              ),
-            ),
-            ListTile(
-              title: Text("Contact"),
-              trailing: IconButton(onPressed: (){},icon: Icon(Icons.quick_contacts_dialer_sharp),),
-            ) ,
-            ListTile(
-              leading: Icon(Icons.email),
-              title: const Text('Email'),
-              onTap: () {},
+                    Stack(children: [
+                      Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                            height: 10, width: 10, color: Color(0xff9cd9d0)),
+                      ),
+                    ]),
+                    Row(
 
-            ),
-            
-            ListTile(
-              title: Text("Update"),
-              trailing: IconButton(onPressed: (){},icon: Icon(Icons.update),),
-            ) ,
-            ListTile(
-              leading: Icon(Icons.logout),
-              title: const Text('Logout'),
-              onTap: () {},
-            ),
-          ],
-        ),
-      ),
-      // backgroundColor: focus.hasFocus ? Colors.red : Colors.green,
-      appBar: AppBar(
-        title: const Text("DropDownMenu"),
-      ),
+                        // crossAxisAlignment: CrossAxisAlignment.start,
+                        // mainAxisAlignment:MainAxisAlignment.center,
 
-    );
+                        children: [
+                          Image.asset('images/mainpage.png'),
+                        ]),
+                    ElevatedButton(
+                        onPressed: () {},
+                        child: Text(
+                          "         Student User          ",
+                          textScaleFactor: 2,
+                          style: TextStyle(height: 3, letterSpacing: 1),
+                          textAlign: TextAlign.start,
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          // backgroundColor: Colors.green,
+                          textStyle: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 10,
+                              fontStyle: FontStyle.normal),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                          ),
+                          elevation: 10,
+                          shadowColor: Colors.black,
+                        )),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    ElevatedButton(
+                        onPressed: () {},
+                        child: Text(
+                          "           Tuter User            ",
+                          textScaleFactor: 2,
+                          style: TextStyle(height: 3, letterSpacing: 1),
+                          textAlign: TextAlign.start,
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          // backgroundColor: Colors.green,
+                          textStyle: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 10,
+                              fontStyle: FontStyle.normal),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                          ),
+                          elevation: 10,
+                          shadowColor: Colors.black,
+                        )),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    ElevatedButton(
+                        onPressed: () {},
+                        child: Text(
+                          "          Admin User           ",
+                          textScaleFactor: 2,
+                          style: TextStyle(height: 3, letterSpacing: 1),
+                          textAlign: TextAlign.start,
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          // backgroundColor: Colors.green,
+                          textStyle: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 10,
+                              fontStyle: FontStyle.normal),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                          ),
+                          elevation: 10,
+                          shadowColor: Colors.black,
+                        )),
+                    SizedBox(
+                      height: 100,
+                    ),
+                    Row(
+                      children: [
+                        Icon(Icons.keyboard_double_arrow_left_sharp),
+                        Text("Back",textScaleFactor: 1.5,)
+                      ],
+                    )
+                  ]),
+            )));
   }
 }
